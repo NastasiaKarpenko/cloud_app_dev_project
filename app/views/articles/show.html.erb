@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
-
+<div class="container-fluid p-3 bg-light rounded">
 <%= render @article %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to the list of articles", articles_path %>
-
-  <%= button_to "Delete this article", @article, method: :delete %>
+<div class="text-sm-center">
+  <%= link_to "Edit this article", edit_article_path(@article), class:"btn btn-secondary"  %> |
+  <%= link_to "Back to the list of articles", articles_path, class:"btn btn-dark"  %>
+  <%= button_to "Delete this article", @article, method: :delete, class:"btn btn-secondary", style: "margin-top: 10px;"  %>
+</div>
 </div>
