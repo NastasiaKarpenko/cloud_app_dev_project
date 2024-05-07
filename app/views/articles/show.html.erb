@@ -3,8 +3,11 @@
 <%= render @article %>
 
 <div class="text-sm-center">
-  <%= link_to "Edit this article", edit_article_path(@article), class:"btn btn-secondary"  %> |
-  <%= link_to "Back to the list of articles", articles_path, class:"btn btn-dark"  %>
+  <%= link_to "Edit this article", edit_article_path(@article), class:"btn btn-secondary"  %> 
+  <%= link_to "Back to the list of articles", articles_path, class:"btn btn-dark"  %> 
+  
   <%= button_to "Delete this article", @article, method: :delete, class:"btn btn-secondary", style: "margin-top: 10px;"  %>
+  
 </div>
 </div>
+

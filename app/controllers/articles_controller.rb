@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  protect_from_forgery with: :exception, unless: -> { request.format.json? }
   before_action :set_article, only: %i[ show edit update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :article_not_found
 
@@ -6,10 +7,13 @@ class ArticlesController < ApplicationController
     @articles = Article.all.page(params[:page]).per(8)
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
+
+   # GET /articles/1 or /articles/1.json
+   def show
+   end
 
   # POST /articles or /articles.json
   def create
@@ -34,7 +38,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
     @article = Article.find(params[:id])
-    
+
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
@@ -48,27 +52,14 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
+    @article = Article.find(params[:id])
     @article.destroy!
 
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "Article was successfully deleted." }
       format.json { head :no_content }
     end
-  end
 
-  # GET /articles/1 or /articles/1.json
-  def show_by_id
-    @article = Article.find(params[:id])
-  end
-
-  # DELETE /articles/1 or /articles/1.json
-  def destroy_by_id
-    @article = Article.find(params[:id])
-    @article.destroy!
-    respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully deleted." }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -82,7 +73,7 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :body, :published)
     end
 
-  def article_not_found
+  def article_not_foundrails s
     respond_to do |format|
       format.html { redirect_to articles_url, alert: 'Article not found.' }
       format.json { render json: { error: 'Article not found' }, status: :not_found }

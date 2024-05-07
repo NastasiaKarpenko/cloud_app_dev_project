@@ -11,6 +11,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "kaminari"
+gem "rack-cors"
 
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
