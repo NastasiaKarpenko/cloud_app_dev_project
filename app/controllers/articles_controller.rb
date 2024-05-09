@@ -11,9 +11,9 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-   # GET /articles/1 or /articles/1.json
-   def show
-   end
+  # GET /articles/1 or /articles/1.json
+  def show
+  end
 
   # POST /articles or /articles.json
   def create
@@ -30,10 +30,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-   # GET /articles/1/edit
-   def edit
+  # GET /articles/1/edit
+  def edit
     @article = Article.find(params[:id])
-   end
+  end
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update

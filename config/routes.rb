@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 get "articles" => "articles#index"
-get "articles/new" => "articles#new"
+post "articles/new" => "articles#new"
 get "articles/:id" => "articles#show"
-get "articles/:id/edit" => "articles#edit"
+put "articles/:id/edit" => "articles#edit"
 post "articles" => "articles#create"
 patch "articles/:id" => "articles#update"
 delete "articles/:id" => "articles#destroy"
