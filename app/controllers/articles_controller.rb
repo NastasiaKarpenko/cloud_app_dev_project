@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :article_not_found
 
   def index
-    @articles = Article.all.page(params[:page]).per(8)
+    @articles = Article.all.page(params[:page]).per(15)
   end
 
   def new
